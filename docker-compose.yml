@@ -1,9 +1,12 @@
 services:
   jupyter:
-    image: rubydata/datascience-notebook
+    # image: rubydata/datascience-notebook
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      - TZ=America/NewYork
+      - TZ=America/New_York
     ports:
       - "8888:8888"
     volumes:

@@ -1,0 +1,146 @@
+{
+  "settings": {
+    "index.knn": true,
+    "index.knn.algo_param.ef_search": 512,
+    "analysis": {
+      "filter": {
+        "english_stop": {
+          "type": "stop",
+          "stopwords": "_english_"
+        },
+        "english_stemmer": {
+          "type": "stemmer",
+          "language": "english"
+        },
+        "english_possessive_stemmer": {
+          "type": "stemmer",
+          "language": "possessive_english"
+        },
+        "english_light_stemmer": {
+          "type": "stemmer",
+          "language": "light_english"
+        }
+
+      },
+      "analyzer": {
+        "analyze_propernoun": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],          
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stemmer"
+          ]
+        },
+        "analyze_english": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_stop",
+            "english_stemmer"
+          ]
+        },
+        "analyze_english_exactish": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_light_stemmer"
+          ]
+        }
+      }
+    } 
+  },
+  "mappings": {
+    "properties": {
+
+      "title_embedding": {
+        "type": "knn_vector",
+        "dimension": 384,
+        "method": {
+          "name": "hnsw",
+          "space_type": "cosinesimil",
+          "engine": "nmslib",
+          "parameters": {
+            "ef_construction": 128,
+            "m": 8
+          }
+        }
+      },
+
+      "description_embedding": {
+        "type": "knn_vector",
+        "dimension": 384,
+        "method": {
+          "name": "hnsw",
+          "space_type": "cosinesimil",
+          "engine": "nmslib",
+          "parameters": {
+            "ef_construction": 512,
+            "m": 32
+          }
+        }
+      },
+
+      "domain": {
+        "type": "keyword"
+      },
+
+      "url": {
+        "type": "keyword"
+      },
+
+      "image_url": {
+        "type": "keyword"
+      },
+
+      "title": {
+        "type": "text",
+        "analyzer": "analyze_english",
+        "copy_to": "title_exactish"
+      },
+
+
+      "text": {
+        "type": "text",
+        "analyzer": "analyze_english",
+        "copy_to": "description_exactish"
+      },
+
+      "description": {
+        "type": "text",
+        "analyzer": "analyze_english",
+        "copy_to": "description_exactish"
+      },
+
+      "title_exactish": {
+        "type": "text",
+        "analyzer": "analyze_english_exactish"
+      },
+
+      "description_exactish": {
+        "type": "text",
+        "analyzer": "analyze_english_exactish"
+      },      
+
+      "date": {
+        "type": "date"
+      },
+
+      "entities": {
+        "type": "text",
+        "analyzer": "analyze_propernoun"
+      }
+
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "settings": {
+    "index.knn": true,
+    "index.knn.algo_param.ef_search": 512,
+    "analysis": {
+      "filter": {
+        "english_stop": {
+          "type": "stop",
+          "stopwords": "_english_"
+        },
+        "english_stemmer": {
+          "type": "stemmer",
+          "language": "english"
+        },
+        "english_possessive_stemmer": {
+          "type": "stemmer",
+          "language": "possessive_english"
+        },
+        "english_light_stemmer": {
+          "type": "stemmer",
+          "language": "light_english"
+        }
+
+      },
+      "analyzer": {
+        "analyze_propernoun": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],          
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_possessive_stemmer"
+          ]
+        },
+        "analyze_english": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_stop",
+            "english_stemmer"
+          ]
+        },
+        "analyze_english_exactish": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "english_light_stemmer"
+          ]
+        }
+      }
+    } 
+  },
+  "mappings": {
+    "properties": {
+
+      "title_embedding": {
+        "type": "knn_vector",
+        "dimension": 384,
+        "method": {
+          "name": "hnsw",
+          "space_type": "cosinesimil",
+          "engine": "nmslib",
+          "parameters": {
+            "ef_construction": 128,
+            "m": 8
+          }
+        }
+      },
+
+      "id": { "type": "keyword" },
+      "text": { "type": "text", "analyzer": "analyze_english" },
+
+      "title": { "type": "text", "analyzer": "analyze_english", "copy_to":"title_exactish"},
+      "title_exactish": { "type": "text", "analyzer": "analyze_english_exactish"},
+      
+      "description": { "type": "text", "analyzer": "analyze_english", "copy_to":"description_exactish" },
+      "description_exactish": { "type": "text", "analyzer": "analyze_english_exactish" },
+      
+      "bullet_point": { "type": "text", "analyzer": "analyze_english" },
+      "bullet_point_exactish": { "type": "text", "analyzer": "analyze_english_exactish" },
+
+      "brand": { "type": "keyword" },
+      "color": { "type": "keyword" },
+      "asin": { "type": "keyword" },
+      "type": { "type": "keyword" },
+      "stars": { "type": "keyword" },
+      "category": { "type": "keyword" },
+      "categories": { "type": "keyword" },
+      "price": { "type": "keyword" },
+      "template": { "type": "keyword" },
+      "image": { "type": "keyword" },
+      "locale": { "type": "keyword" },
+      "subtitle": { "type": "text", "analyzer": "analyze_english", "copy_to":"subtitle_exactish"},
+      "subtitle_exactish": { "type": "text", "analyzer": "analyze_english_exactish" },
+      "author": { "type": "text", "analyzer": "analyze_propernoun" }
+
+    }
+  }
+}
