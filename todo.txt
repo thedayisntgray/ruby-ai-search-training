@@ -11,7 +11,7 @@ Port over
 
 Test Implementation
 [x] - 01-color-distance.ipynb                      
-[] - 01a-dot-product.ipynb
+[x]] - 01a-dot-product.ipynb
 [] - 02-sentence-transformer.ipynb
 [] - 03-index-opensearch.ipynb
 [] - 04-query-hybrid.ipynb
@@ -22,7 +22,7 @@ SKIP TIL END [] - 05-llm-teacher-organizations-for-spacy.ipynb
 
 Clean Up - Add better librararies
 [x] - 01-color-distance.ipynb                      
-[] - 01a-dot-product.ipynb
+[x] - 01a-dot-product.ipynb
 [] - 02-sentence-transformer.ipynb
 [] - 03-index-opensearch.ipynb
 [] - 04-query-hybrid.ipynb
