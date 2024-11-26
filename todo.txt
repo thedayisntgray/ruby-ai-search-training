@@ -13,6 +13,9 @@ Test Implementation
 [x] - 01-color-distance.ipynb                      
 [x]] - 01a-dot-product.ipynb
 [] - 02-sentence-transformer.ipynb
+- line 35 dataset cleanup (dataset doesnt' exist in ruby - hugging face library)
+-- put this in red-dataset or download directly
+-- can use polars
 [] - 03-index-opensearch.ipynb
 [] - 04-query-hybrid.ipynb
 [] - 05-RAG.ipynb
