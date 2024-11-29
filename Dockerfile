@@ -33,6 +33,8 @@ RUN gem uninstall rice torch-rb transformers-rb --all --executables --ignore-dep
 
 RUN gem install transformers-rb && \
     gem install tqdm && \
-    gem install polars-df
+    gem install polars-df && \
+    gem install opensearch-ruby
+
 
 WORKDIR /home/jovyan/work
