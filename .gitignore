@@ -1,1 +1,4 @@
 **/.ipynb_checkpoints/
+notebooks/clip_model.onnx
+notebooks/house_data_png.marshal
+notebooks/house_data_png/
