@@ -37,8 +37,7 @@ RUN gem install transformers-rb && \
     gem install opensearch-ruby && \
     gem install httparty && \
     gem install mini_magick && \
-    gem install onnxruntime
-    
-
+    gem install onnxruntime && \
+    gem install rmagick
 
 WORKDIR /home/jovyan/work
