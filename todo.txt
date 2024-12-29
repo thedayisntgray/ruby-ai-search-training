@@ -2,7 +2,7 @@ Port over
 [x] - 01-color-distance.ipynb                      
 [x] - 01a-dot-product.ipynb
 [x] - 02-sentence-transformer.ipynb
-[] - 03-index-opensearch.ipynb
+[x] - 03-index-opensearch.ipynb
 [] - 04-query-hybrid.ipynb
 [] - 05-RAG.ipynb
 [] - 05-llm-teacher-organizations-for-spacy.ipynb
@@ -11,12 +11,12 @@ Port over
 
 Test Implementation
 [x] - 01-color-distance.ipynb                      
-[x]] - 01a-dot-product.ipynb
+[x] - 01a-dot-product.ipynb
 [x] - 02-sentence-transformer.ipynb
 - line 35 dataset cleanup (dataset doesnt' exist in ruby - hugging face library)
 -- put this in red-dataset or download directly
 -- can use polars
-[] - 03-index-opensearch.ipynb
+[x] - 03-index-opensearch.ipynb
 [] - 04-query-hybrid.ipynb
 [] - 05-RAG.ipynb
 SKIP TIL END [] - 05-llm-teacher-organizations-for-spacy.ipynb
@@ -34,4 +34,12 @@ SKIP TIL END [] - 05-llm-teacher-organizations-for-spacy.ipynb
 [] - 06-Text2Query.ipynb
 [] - 07-CLIP.ipynb
 
+
+Notes
+Dont forget to restart and clear all outputs under kernal tab
+
+Clip to Onnx: https://colab.research.google.com/github/josephrocca/openai-clip-js/blob/main/Export_CLIP_to_ONNX_tflite_tfjs_tf_saved_model.ipynb
+
 docker-compose build --no-cache
+
+docker compose exec --user root jupyter /bin/bash
