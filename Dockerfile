@@ -38,6 +38,8 @@ RUN gem install transformers-rb && \
     gem install httparty && \
     gem install mini_magick && \
     gem install onnxruntime && \
-    gem install rmagick
+    gem install rmagick && \
+    gem install ruby-openai && \
+    gem install faiss
 
 WORKDIR /home/jovyan/work
