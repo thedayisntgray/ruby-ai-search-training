@@ -40,6 +40,8 @@ RUN gem install transformers-rb && \
     gem install onnxruntime && \
     gem install rmagick && \
     gem install ruby-openai && \
-    gem install faiss
+    gem install faiss && \
+    gem install dotenv && \
+    gem install narray
 
 WORKDIR /home/jovyan/work
