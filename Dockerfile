@@ -36,10 +36,11 @@ RUN gem install transformers-rb && \
     gem install polars-df && \
     gem install opensearch-ruby && \
     gem install httparty && \
-    gem install mini_magick && \
-    gem install onnxruntime && \
     gem install rmagick && \
+    gem install onnxruntime && \
     gem install ruby-openai && \
     gem install faiss
+
+RUN cd /home/jovyan/work/notebooks && ./prepare_embeddings_cache.sh
 
 WORKDIR /home/jovyan/work
