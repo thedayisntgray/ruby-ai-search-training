@@ -3,3 +3,4 @@ notebooks/*.onnx
 notebooks/house_data_png.marshal
 notebooks/house_data_png/
 .env
+notebooks/event_planning.db
