@@ -15,10 +15,10 @@ services:
     depends_on:
       - ruby-opensearch-node
     networks:
-      - search-network
+      - ruby-search-network
 
   ruby-opensearch-node:
-    image: opensearchproject/opensearch:2.11.0
+    image: opensearchproject/opensearch:2.18.0
     container_name: ruby-opensearch-node
     environment:
       - cluster.name=opensearch-cluster
@@ -46,10 +46,10 @@ services:
       - "9200:9200"
       - "9600:9600"
     networks:
-      - search-network
+      - ruby-search-network
 
   ruby-opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:2.11.0
+    image: opensearchproject/opensearch-dashboards:2.18.0
     container_name: ruby-opensearch-dashboards
     ports:
       - "5601:5601"
@@ -59,11 +59,11 @@ services:
     depends_on:
       - ruby-opensearch-node   
     networks:
-      - search-network
+      - ruby-search-network
 
 volumes:
   ruby-opensearch-data:
 
 networks:
-  search-network:
-    name: search-network
+  ruby-search-network:
+    name: ruby-search-network
