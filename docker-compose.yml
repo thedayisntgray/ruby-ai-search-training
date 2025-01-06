@@ -13,16 +13,16 @@ services:
       - ./notebooks:/home/jovyan/work/notebooks
       - ./data:/home/jovyan/work/data
     depends_on:
-      - opensearch-node
+      - rubyai-opensearch-node
     networks:
-      - search-network
+      - rubyai-search-network
 
-  opensearch-node:
-    image: opensearchproject/opensearch:2.11.0
-    container_name: opensearch-node
+  rubyai-opensearch-node:
+    image: opensearchproject/opensearch:2.18.0
+    container_name: rubyai-opensearch-node
     environment:
       - cluster.name=opensearch-cluster
-      - node.name=opensearch-node
+      - node.name=rubyai-opensearch-node
       - discovery.type=single-node
       - "http.cors.enabled=true"
       - "http.cors.allow-origin=*"
@@ -41,29 +41,29 @@ services:
         soft: 65536
         hard: 65536
     volumes:
-      - opensearch-data:/usr/share/opensearch/data
+      - rubyai-opensearch-data:/usr/share/opensearch/data
     ports:
       - "9200:9200"
       - "9600:9600"
     networks:
-      - search-network
+      - rubyai-search-network
 
-  opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:2.11.0
-    container_name: opensearch-dashboards
+  rubyai-opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2.18.0
+    container_name: rubyai-opensearch-dashboards
     ports:
       - "5601:5601"
     environment:
-      - 'OPENSEARCH_HOSTS=["http://opensearch-node:9200"]'
+      - 'OPENSEARCH_HOSTS=["http://rubyai-opensearch-node:9200"]'
       - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true"
     depends_on:
-      - opensearch-node   
+      - rubyai-opensearch-node   
     networks:
-      - search-network
+      - rubyai-search-network
 
 volumes:
-  opensearch-data:
+  rubyai-opensearch-data:
 
 networks:
-  search-network:
-    name: search-network
+  rubyai-search-network:
+    name: rubyai-search-network
