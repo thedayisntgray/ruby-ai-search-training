@@ -1,33 +1,32 @@
+# Ruby AI Training - Exercises for the Course
 
-```markdown
-# AI Search Training Project
-
-This repository contains Jupyter notebooks and data for AI search training.
+This repository contains IRuby Jupyter notebooks and data for AI search training.
 
 ## Setup & Running
 
 ### Prerequisites
-- Docker and Docker Compose installed on your machine
+- Docker Desktop installed on your machine
+- At least 4vCPUs, 6GB RAM, and 50GB disk allocated to Docker
 - Git (to clone this repository)
 
 ### Running the Container
 
 1. Clone the repository:
 ```bash
-git clone [your-repository-url]
-cd [repository-name]
+git clone https://github.com/thedayisntgray/ruby-ai-search-training
+cd https://github.com/thedayisntgray/ruby-ai-search-training
 ```
 
 2. Start the container:
 ```bash
-docker-compose up -d
+docker compose up
 ```
 
 ### Accessing Jupyter Notebook
 
 1. Get the Jupyter access token by running:
 ```bash
-docker-compose logs jupyter
+docker compose logs jupyter
 ```
 
 2. Look for a line that looks like:
@@ -50,17 +49,23 @@ http://127.0.0.1:8888/lab?token=<your_token_here>
 ### Common Commands
 
 ```bash
-# Start the container
-docker-compose up -d
+# Start the containers while logging to the terminal
+docker compose up
+
+# Start the containers in daemon mode (everything will run in the background)
+docker compose up -d
 
 # Stop the container
-docker-compose down
+docker compose down
 
 # View logs
-docker-compose logs jupyter
+docker compose logs jupyter
 
-# Restart the container
-docker-compose restart
+# Restart the containers
+docker compose restart
+
+# Rebuild the containers
+docker compose build
 ```
 
 ### Troubleshooting
@@ -68,12 +73,12 @@ docker-compose restart
 If you can't access Jupyter:
 1. Ensure the container is running:
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 2. Check container logs:
 ```bash
-docker-compose logs jupyter
+docker compose logs jupyter
 ```
 
 3. Verify port 8888 is available:
@@ -86,6 +91,3 @@ lsof -i :8888
 - Place notebooks in the `notebooks/` directory
 - Place data files in the `data/` directory
 - Files will automatically sync with the container
-```
-
-Would you like me to add any additional sections or information to this README?
