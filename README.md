@@ -36,7 +36,7 @@ http://127.0.0.1:8888/lab?token=<your_token_here>
 
 3. Open your browser and go to:
    - http://localhost:8888
-   - Enter the token from the logs when prompted
+   - Copy and Paste the token from the logs when prompted
 
 ### Project Structure
 ```
