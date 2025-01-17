@@ -14,7 +14,7 @@ This repository contains IRuby Jupyter notebooks and data for AI search training
 1. Clone the repository:
 ```bash
 git clone https://github.com/thedayisntgray/ruby-ai-search-training
-cd https://github.com/thedayisntgray/ruby-ai-search-training
+cd ruby-ai-search-training
 ```
 
 2. Start the container:
